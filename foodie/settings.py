@@ -125,3 +125,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': 
+    ('oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    'rest_framework.authentication.SessionAuthentication'),
+}
+
+
+OAUTH2_PROVIDER = {
+# this is the list of available scopes
+'SCOPES': {'read': 'Read scope'},
+'ACCESS_TOKEN_EXPIRE_SECONDS': 36000000,
+} 
+
+
+# 'DEFAULT_AUTHENTICATION_CLASSES': (
+#     'rest_framework.authentication.OAuth2Authentication',
+# ),

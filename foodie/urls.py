@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^', include('restaurants.urls')),
     url(r'^api/restaurant/', include('restaurants.api.urls')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url(r'^order/', include('orders.urls')),
     # url(r'^review/', include('reviews.urls')),
     # url(r'^profile/', include('userprofiles.urls')),
