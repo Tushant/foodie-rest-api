@@ -28,7 +28,9 @@ class UserLoginAPI(APIView):
     serializer_class = UserLoginSerializer
     
     def post(self, request, *args, **kwargs):
-    	access_token = AccessToken.objects.get(token=request.POST.get('access_token'), expires__gt=timezone.now())
+    	print(request.data)
+    	print('access token', request.data.get('access_token'))
+    	access_token = AccessToken.objects.get(token=request.data.get('access_token'), expires__gt=timezone.now())
     	data = request.data
     	serializer = UserLoginSerializer(data=data)
     	if serializer.is_valid(raise_exception=True):
