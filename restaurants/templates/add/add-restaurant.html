@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Foodie | Add Restaurant {% endblock title%}
+
+{% block content %}
+  <div class="addRestaurant">
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script type="text/javascript">
+  var data = {
+         isUserAuthenticated:{% if request.user.is_authenticated %}true{% else %}false{% endif %}
+    };
+    $(function() {
+      app.showAddRestaurant(".addRestaurant", data);
+    });
+  </script>
+{% endblock %}

@@ -31,19 +31,42 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli.dashboard',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oauth2_provider',
     'corsheaders',
     'rest_framework',
+    'debug_toolbar',
+    'debug_panel',
     'restaurants',
+    'userprofiles',
+    'orders',
+    'app',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 
-MIDDLEWARE = [
+GRAPPELLI_ADMIN_TITLE = 'Foodie'
+
+# GRAPPELLI_INDEX_DASHBOARD = 'foodie.dashboard.CustomIndexDashboard'
+
+GRAPPELLI_INDEX_DASHBOARD = {
+    'django.contrib.admin.site': 'foodie.dashboard.CustomIndexDashboard',
+    # 'foodie.admin.admin_site': 'foodie.my_dashboard.CustomIndexDashboard',
+}
+
+SITE_ID = 1
+
+MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,8 +74,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
-]
+    'debug_panel.middleware.DebugPanelMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+)
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -77,15 +102,45 @@ TEMPLATES = [
 WSGI_APPLICATION = 'foodie.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    #oauth2 authentication backend
+    'oauth2_provider.backends.OAuth2Backend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+)
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'userprofiles.forms.SignupForm'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'publish_stream'],
+        'METHOD': 'js_sdk'  # instead of 'oauth2'
     }
 }
+
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.path.join(BASE_DIR, 'foodie'),
+            'USER':'root',
+            'PASSWORD':'tushant',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -125,11 +180,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+            os.path.join(BASE_DIR, 'app', 'static'),
+            )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': 
+    'DEFAULT_AUTHENTICATION_CLASSES':
     ('oauth2_provider.ext.rest_framework.OAuth2Authentication',
     'rest_framework.authentication.SessionAuthentication'),
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
 
 
@@ -137,7 +200,7 @@ OAUTH2_PROVIDER = {
 # this is the list of available scopes
 'SCOPES': {'read': 'Read scope'},
 'ACCESS_TOKEN_EXPIRE_SECONDS': 36000000,
-} 
+}
 
 
 # 'DEFAULT_AUTHENTICATION_CLASSES': (

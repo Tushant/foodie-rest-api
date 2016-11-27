@@ -1,0 +1,90 @@
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight:100;
+}
+
+.nav{
+  background: transparent;
+  position: absolute;
+  box-shadow:none;
+}
+
+.global-nav {
+    background: #1ab394;
+}
+
+.body-image{
+  background-image: -webkit-linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)),url('../img/wallpaper1.jpg');
+  background-image: -o-linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)),url('../img/wallpaper1.jpg');
+  background-image: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)),url('../img/wallpaper1.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding:10em;
+}
+
+select {
+    display: block;
+    background: transparent;
+    color: #fff;
+    height:50px;
+    width:50%;
+    margin:0 auto;
+}
+
+option{
+  color:#999;
+}
+
+svg{
+  color:#fff;
+  fill:#fff !important;
+}
+
+.collections-text{
+  font-size:2.2em;
+  margin:2em 0 0.6em 1.3em;
+}
+
+.collections-text:after {
+    border-bottom: solid 3px #1ab394;
+    display: block;
+    width: 10%;
+    height: 10px;
+    content: '';
+    position: absolute;
+}
+
+.card {
+    position: relative;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    width:350px;
+}
+
+.card img{
+  width:400px;
+  height:250px;
+}
+
+.card .card-content {
+    padding: 1px 10px;
+    border-radius: 0 0 2px 2px;
+}
+
+/* Transitions */
+.fade-enter{
+  right:100px;
+}
+
+.fade-enter-active{
+  right:0px;
+  transition: .50s ease-in all;
+}
+/* end Transitions */
+
+.attribute{
+  font-size:2rem;
+}

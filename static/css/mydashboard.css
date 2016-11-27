@@ -1,0 +1,64 @@
+body.dashboard{
+	font-family: 'Raleway', sans-serif;
+	font-weight:300px !important;
+}
+
+div#grp-navigation {
+    background: #222 !important;
+    padding: 9px !important;
+}
+
+header#grp-header #grp-navigation ul#grp-user-tools>li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0;
+    white-space: nowrap;
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    border-left: 1.7px solid #fff;
+    border-right: 1.7px solid #fff;
+}
+
+header#grp-header #grp-navigation a {
+    color: #fff;
+}
+
+h2.module_title.grp-collapse-handler {
+    text-shadow: none;
+    padding: 12px;
+    color:#666;
+}
+
+h3.module_title {
+    text-shadow: none;
+}
+
+.grp-row a {
+    text-shadow: none;
+    color:#777;
+    font-weight: lighter !important;
+}
+
+.grp-row {
+    background: #fff;
+}
+
+h3.module_title.grp-collapse-handler {
+    /*background: #065862 !important;*/
+    text-shadow: none;
+}
+
+
+.grp-module h4 {
+    /*background: #ff6666;*/
+}
+
+.grp-module h4 a{
+	/*color:#fff;*/
+	text-shadow: none !important;
+}
+
+.ui.card:last-child {
+    margin-bottom: 15px;
+}

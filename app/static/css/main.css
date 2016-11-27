@@ -1,0 +1,165 @@
+@font-face {
+    font-family: "Montserrat Hairline";
+    src: url("./font/Montserrat-Hairline.otf");
+}
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  overflow-x: hidden;
+}
+
+/*p, h1, h2, h3, h4, span {
+  font-family: 'Montserrat', sans-serif !important;
+}*/
+
+
+.masthead-content {
+    min-height: 550px;
+    padding: 15rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+
+.ui.large.secondary.menu a, .ui.large.secondary.menu .active,
+.ui.large.secondary.menu:hover {
+    color: #fff;
+}
+
+a.item.tab:hover {
+    color: #fff !important;
+}
+
+.introduction {
+    padding: 2em;
+}
+
+h1.ui.header {
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 900;
+    color: #fff;
+}
+
+.masthead.segment {
+	min-height: 550px;
+}
+
+.masthead {
+	background: url(../img/foodieOverlay.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.ui.segment.foodie-form {
+    background: linear-gradient(to bottom right, #02b3e4, #02ccba);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+}
+
+.foodie-form-card.ui.card, .ui.cards>.card {
+  max-width: 100%;
+  width:100%;
+  margin: 2em;
+  border:none;
+  border-radius: 0;
+}
+
+h1.form-quote {
+  font-family: "Montserrat Hairline", Montserrat !important;
+  font-weight: lighter;
+  color: #888;
+}
+
+.cards select.ui.fluid.dropdown {
+    border: none;
+    border-bottom: solid 1px #0dc;
+    width: 50% !important;
+    border-radius: 0;
+    margin: 0 10px !important;
+    padding: 0 !important;
+    display: inline;
+}
+
+button.massive.ui.button.find {
+    background: #02b3e4;
+    color: #fff;
+    font-weight: 100;
+}
+
+.my-gallery-class {
+    position: relative;
+    width: 960px;
+    height: 930px;
+}
+
+.my-gallery-class p {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    color: #fff;
+    font-size: 2em;
+    font-weight: 900;
+}
+
+/*.ui.segment.foodie-form {
+    position: relative;
+    bottom: -50px;
+    margin: 0 8em 1em 8em;
+    padding: 6em;
+    background: rgba(2,204,186,0.8);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    opacity: 0.9;
+}*/
+
+.bannerRow{
+	padding:0 !important;
+}
+
+.ui.grid.main{
+	margin-top: 0px;
+}
+
+.ui.inverted.menu {
+	background: transparent;
+}
+.ui.inverted.menu a{
+	color: #000 !important;
+}
+
+.ui.inverted.menu .active.item {
+	color: #000 !important;
+	background: transparent;
+}
+
+.mobile.row{
+	padding-top: 0px !important;
+	margin-top: 0px !important;
+}
+
+.mobile.row .ui.inverted.menu{
+	border-radius: 0px !important;
+}
+
+.padding-reset{
+	padding: 0px !important;
+}
+
+@media (max-width: 767px) {
+  	.ui.grid.main{
+  		margin-top: 70px;
+	}
+
+    .ui.grid { margin: 0 !important; }
+	.ui.vertical.menu.navbar{
+		margin-top: 0px !important;
+		padding: 10px !important;
+	}
+}
+
+.ui.vertical.menu{
+	margin-top: -15px !important;
+	width: 100%;
+}
